@@ -1,12 +1,11 @@
 CXX = g++
-BOOSTDIR = /Users/Josh/Library/Cpp/boost_1_64_0
 
-all: test.exe
+test: Tests/atest.exe
 
-test.exe: matrix_utils.cpp
-	$(CXX) -I$(BOOSTDIR) -o $@ $^
+Tests/atest.exe: libmatarray.hpp Tests/test.cpp
+	g++ --std=c++11 -I. -o Tests/atest.exe Tests/test.cpp
 
 clean:
-	rm *.exe *.o
+	rm -f Tests/atest.exe
 
-.PHONY: all clean
+.PHONY: test clean
